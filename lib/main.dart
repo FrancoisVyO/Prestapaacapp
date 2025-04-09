@@ -35,7 +35,7 @@ void main() {
                 children: [
                   Navbar(),
                   Expanded(
-                    child: Sucursales(),
+                    child: Pantallainicio(),
                   ),
                 ],
               ),

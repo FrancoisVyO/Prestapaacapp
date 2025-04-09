@@ -66,6 +66,12 @@ flutter:
     - assets/images/PC.webp
     - assets/images/Telefono.webp
     - assets/images/Wii.webp
+    - assets/images/Abasolo.png
+    - assets/images/Penjamo.png
+    - assets/images/Irapuato.png
+    - assets/images/Wii.webp
+    - assets/images/Wii.webp
+    - assets/images/Wii.webp
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

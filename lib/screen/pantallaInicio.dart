@@ -19,14 +19,17 @@ class _PantallainicioState extends State<Pantallainicio> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Expanded(
-          child: Container(
+          child: Container(            
             color: Colors.white,
             height: alturaPantalla,
             width: anchoPantalla,
             child: SingleChildScrollView(
-              child: Column(
+              child: Column(                
                 children: [
-                  Objetos(),
+                  Text(
+                    style: TextStyle(fontSize: 23, color: Colors.black),
+                    'Bienvenido a PrestaPaAcAPP',
+                  )
                 ],
               ),
             ),
