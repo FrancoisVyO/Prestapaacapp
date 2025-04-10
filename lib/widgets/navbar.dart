@@ -1,41 +1,36 @@
 import 'package:flutter/material.dart';
 
-class Navbar extends StatefulWidget {
-  const Navbar({super.key});
-  @override
-  State<Navbar> createState() => _NavbarState();
-}
+class Navbar extends StatelessWidget {
+  final int selectedIndex;
+  final Function(int) onIndexChanged;
 
-class _NavbarState extends State<Navbar> {
-  int currentPageIndex = 0;
+  const Navbar({
+    Key? key,
+    required this.selectedIndex,
+    required this.onIndexChanged,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final alturaPantalla = MediaQuery.of(context).size.height * .1;
-    final anchoPantalla = MediaQuery.of(context).size.width * 1;
-    final ThemeData theme = Theme.of(context);
+
     return NavigationBar(
-      onDestinationSelected: (int index) {
-        setState(() {
-          currentPageIndex = index;
-        });
-      },
+      onDestinationSelected: onIndexChanged,
       indicatorColor: Colors.green[300],
       backgroundColor: Colors.green,
-      selectedIndex: currentPageIndex,
-      height: alturaPantalla,      
+      selectedIndex: selectedIndex,
+      height: alturaPantalla,
       destinations: const <Widget>[
-        NavigationDestination(                    
+        NavigationDestination(
           selectedIcon: Icon(Icons.home),
           icon: Icon(Icons.home_outlined),
           label: 'Inicio',
         ),
         NavigationDestination(
           selectedIcon: Icon(Icons.store),
-          icon: Icon(
-            Icons.store_outlined,
-          ),
+          icon: Icon(Icons.store_outlined),
           label: 'Sucursales',
-        ),        
+        ),
       ],
     );
   }

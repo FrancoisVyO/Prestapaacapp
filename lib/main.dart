@@ -1,48 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:prestapaacapp/screen/pantallaInicio.dart';
+import 'package:prestapaacapp/screen/pantallaSucursales.dart';
 import 'package:prestapaacapp/widgets/navbar.dart';
-import 'package:flutter/services.dart';
-import 'package:prestapaacapp/widgets/sucursales.dart';
+import 'package:prestapaacapp/screen/pantallaInicio.dart';
+import 'package:prestapaacapp/screen/pantallaSucursales.dart';
 
 void main() {
-  //Para cambia el color de la barra de estado.
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      statusBarColor: Colors.green,
-      statusBarBrightness: Brightness.light,
-    ),
-  );
-
   runApp(
     MaterialApp(
-      home: Scaffold(
-        body: SafeArea(
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: <Color>[
-                  Colors.white,
-                  Colors.white,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Navbar(),
-                  Expanded(
-                    child: Pantallainicio(),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
+      home: MyHomePage(),
     ),
   );
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _currentIndex = 0;  // Para mantener el índice del navbar
+
+  // Método para cambiar la página
+  void _onNavBarTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // El contenido que cambiará según la selección
+    Widget _getPageContent() {
+      switch (_currentIndex) {
+        case 0:
+          return Pantallainicio(); // Contenido para la pantalla de inicio
+        case 1:
+          return Pantallasucursales(); // Contenido para la pantalla de sucursales
+        default:
+          return Pantallainicio(); // Default
+      }
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Mi Aplicación'),
+        backgroundColor: Colors.green,
+      ),
+      body: Column(
+        children: [
+          Navbar(
+            selectedIndex: _currentIndex,  // Le pasamos el índice seleccionado
+            onIndexChanged: _onNavBarTapped,  // Cambiar el índice cuando se toque
+          ),
+          Expanded(
+            child: _getPageContent(),  // Aquí cambia el contenido según el índice
+          ),
+        ],
+      ),
+    );
+  }
 }

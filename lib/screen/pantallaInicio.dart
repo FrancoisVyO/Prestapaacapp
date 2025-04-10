@@ -1,41 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:prestapaacapp/widgets/objetos.dart';
 
-class Pantallainicio extends StatefulWidget {
+class Pantallainicio extends StatelessWidget {
   const Pantallainicio({super.key});
 
   @override
-  State<Pantallainicio> createState() => _PantallainicioState();
-}
-
-class _PantallainicioState extends State<Pantallainicio> {
-  //obtener el ancho y alto de la pantalla
-  @override
   Widget build(BuildContext context) {
-    final alturaPantalla = MediaQuery.of(context).size.height * 0.9;
-    final anchoPantalla = MediaQuery.of(context).size.width * .8;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        Expanded(
-          child: Container(            
-            color: Colors.white,
-            height: alturaPantalla,
-            width: anchoPantalla,
-            child: SingleChildScrollView(
-              child: Column(                
-                children: [
-                  Text(
-                    style: TextStyle(fontSize: 23, color: Colors.black),
-                    'Bienvenido a PrestaPaAcAPP',
-                  )
-                ],
-              ),
+    final alturaPantalla = MediaQuery.of(context).size.height * 1;
+    final anchoPantalla = MediaQuery.of(context).size.width * 1;
+
+    return Center(
+      child: Container(
+        margin: EdgeInsets.all(2),
+        padding: EdgeInsets.all(10),
+        alignment: Alignment.topLeft,
+        height: alturaPantalla,
+        width: anchoPantalla,
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              'Bienvenido a PrestaPaAcAPP',
+              style: TextStyle(fontSize: 23, color: Colors.black,fontWeight: FontWeight.bold),
             ),
-          ),
-        )
-      ],
+            SizedBox(
+              height: 100,
+            ),
+            Image.asset('assets/images/Colores.png'),
+          ],
+        ),
+      ),
     );
   }
 }

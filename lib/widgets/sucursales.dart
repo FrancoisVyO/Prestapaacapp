@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prestapaacapp/service/sucursalesRegistradas.dart';
-import 'package:prestapaacapp/widgets/objetos.dart'; 
+import 'package:prestapaacapp/widgets/objetos.dart';
 
 class Sucursales extends StatefulWidget {
   const Sucursales({super.key});
@@ -24,7 +24,10 @@ class _SucursalesState extends State<Sucursales> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const Objetos(),
+                  builder: (context) => Objetos(
+                    objetosdesucursal:
+                        sucursalesRegistradas[index].objetosdellugar,
+                  ),
                 ),
               );
             },
@@ -34,13 +37,15 @@ class _SucursalesState extends State<Sucursales> {
                   color: Colors.grey,
                   width: 2.0,
                 ),
-                color: const Color.fromARGB(255, 255, 208, 8),
+                // color: const Color.fromARGB(255, 255, 208, 8),
+                color: Colors.transparent,
                 borderRadius: BorderRadius.circular(10),
               ),
               margin: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 children: [
-                  Image.asset(sucursalesRegistradas[index].rutaimagen.toString()),
+                  Image.asset(
+                      sucursalesRegistradas[index].rutaimagen.toString()),
                   const SizedBox(height: 12),
                   Text(
                     'Firs Cash de ${sucursalesRegistradas[index].municipio}, ${sucursalesRegistradas[index].estado}',
